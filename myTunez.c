@@ -91,6 +91,43 @@ void print_list(song_node *n ) {
   printf("]\n");
 }
 
+void print_song(song_node *n){
+  if (n)
+    printf("%s -- %s \n", n->artist, n->name );
+  else
+    printf("no song\n");
+}
+
+song_node * find_random(song_node *list) {
+
+  int len=len_song_list(list);
+  srand(time(NULL));
+  int ran=rand()%len;
+  printf("random %d\n",ran);
+  int i;
+  for (i=0;i<ran;i++) {
+    list=list->next;
+  }
+  return list;
+}
+
+int len_song_list(song_node *list) {
+  int count=0;
+  while (list) {
+    count++;
+    list=list->next;
+  }
+  return count;
+}
+
+song_node * remove(song_node *list,song_node *to_remove) {
+  song_node *ret=list;
+  song_node *bef=NULL;
+  if (list==to_remove) {
+    
+  while (list) {
+    if (list
+
 int main() {
 
   song_node *s = 0;
@@ -118,21 +155,30 @@ int main() {
   printf("\n");
   printf("Testing searching for songs by title:\n");
   printf("Finding \"twinkle twinkle\" in s:\n");
-  print_list(find_song_name(s, "twinkle twinkle"));
+  print_song(find_song_name(s, "twinkle twinkle"));
   printf("Finding \"uuu\" in s:\n");
-  print_list(find_song_name(s, "uuu"));
+  print_song(find_song_name(s, "uuu"));
   printf("Finding \"doesn't exist boi\" in s:\n");
-  print_list(find_song_name(s, "doesn't exist boi"));
+  print_song(find_song_name(s, "doesn't exist boi"));
   printf("\n");
   printf("========================================\n");
   printf("\n");
   printf("Testing searching for songs by artist:\n");
   printf("Finding guest's song in s:\n");
-  print_list(find_song_artist(s, "guest"));
+  print_song(find_song_artist(s, "guest"));
   printf("Finding anon's song in s:\n");
-  print_list(find_song_artist(s, "anon"));
+  print_song(find_song_artist(s, "anon"));
   printf("\n");
   printf("========================================\n");
+  printf("\n");
+  printf("Testing finding a random song:\n");
+  printf("Finding random song in s:\n");
+  print_song(find_random(s));
+  /* int c,d; */
+  /* for ( c = 1 ; c <= 32767 ; c++ ) */
+  /*      for ( d = 1 ; d <= 32767 ; d++ ) */
+  /* 	 1; */
+  /* print_song(find_random(s)); */
   printf("\n");
 
   
