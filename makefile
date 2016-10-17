@@ -1,5 +1,5 @@
-musicTest: myTunez.c
-	gcc myTunez.c -g -o musicTest
+musicTest: songList.c
+	gcc songList.c -g -o musicTest
 
 run: musicTest
 	./musicTest

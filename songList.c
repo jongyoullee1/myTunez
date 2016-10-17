@@ -1,12 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "songList.h"
 
-typedef struct song_node{ 
-  char name[256];
-  char artist[256];
-  struct song_node *next;
-} song_node;
+/* typedef struct song_node{  */
+/*   char name[256]; */
+/*   char artist[256]; */
+/*   struct song_node *next; */
+/* } song_node; */
 
 song_node * create_node(char *name1, char *artist1){
   song_node *new = (song_node *) malloc(sizeof(song_node));
@@ -43,25 +44,6 @@ song_node * in_order(song_node *s,char * name1, char * artist1) {
   return retVal;
 }
 
-/* song_node * in_order(song_node *s,char * name1, char * artist1) { */
-/*   if (strcmp(s->name, name1) > 0) return insert_front(s,name1,artist1); */
-/*   song_node *retVal=s; */
-/*   song_node *bef=s; */
-/*   s = s->next; */
-/*   while (s) { */
-/*     if (strcmp(s->name, name1) > 0) { */
-/*       song_node *new = insert_front(s,name1,artist1); */
-/*       bef->next = new; */
-/*       return retVal; */
-/*      } */
-/*     s = s->next; */
-/*     bef = bef->next; */
-/*   } */
-/*   song_node * toInsert = create_node(name1, artist1); */
-/*   bef->next = toInsert; */
-/*   return retVal; */
-/* } */
-
 song_node * find_song_name(song_node *list, char * song_title){
   while (list){
     if (strcmp(list->name, song_title) == 0)
@@ -81,9 +63,7 @@ song_node * find_song_artist(song_node *list, char * song_artist){
 }
 
 void print_list(song_node *n ) {
-
   printf("[ ");
-  
   while(n) {
     printf("%s -- %s ", n->artist, n->name );
     n = n->next;
@@ -99,7 +79,6 @@ void print_song(song_node *n){
 }
 
 song_node * find_random(song_node *list) {
-
   int len=len_song_list(list);
   srand(time(NULL));
   int ran=rand()%len;
@@ -142,6 +121,19 @@ song_node * remove_node(song_node *list,song_node *to_remove) {
   return ret;
 
 }
+
+song_node * free_list(song_node *n ) {
+
+  song_node *f = n;
+  while ( n ) {
+    n = n->next;
+    printf("freeing node: %s -- %s\n", f->artist, f->name );
+    free(f);
+    f = n;    
+  }
+  return n;
+}
+
 int main() {
 
   song_node *s = 0;
@@ -193,13 +185,15 @@ int main() {
   printf("\n");
   printf("Testing removing a node (removing uuu node):\n");
   printf("Removed uuu:\n");
-  print_list(remove_node(s, find_song_name(s, "uuu")));
+  s = remove_node(s, find_song_name(s, "uuu"));
+  print_list(s);
   /* int c,d; */
   /* for ( c = 1 ; c <= 32767 ; c++ ) */
   /*      for ( d = 1 ; d <= 32767 ; d++ ) */
   /* 	 1; */
   /* print_song(find_random(s)); */
   printf("\n");
+  free_list(s);
 
   
   return 0;
