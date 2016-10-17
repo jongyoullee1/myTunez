@@ -23,16 +23,18 @@ song_node * insert_front(song_node *s,char *name1,char *artist1) {
 }
 
 song_node * in_order(song_node *s,char * name1, char * artist1) {
-  if (strcmp(s->name, name1) > 0) return insert_front(s,name1,artist1);
+  if (strcmp(s->artist, artist1) > 0) return insert_front(s,name1,artist1);
   song_node *retVal=s;
   song_node *bef=s;
   s = s->next;
   while (s) {
-    if (strcmp(s->name, name1) > 0) {
+    int aCmpVal = strcmp(s->artist, artist1);
+    if (aCmpVal > 0 ||
+	(aCmpVal == 0 && strcmp(s->name, name1) > 0)){
       song_node *new = insert_front(s,name1,artist1);
       bef->next = new;
       return retVal;
-     }
+    } 
     s = s->next;
     bef = bef->next;
   }
@@ -40,6 +42,25 @@ song_node * in_order(song_node *s,char * name1, char * artist1) {
   bef->next = toInsert;
   return retVal;
 }
+
+/* song_node * in_order(song_node *s,char * name1, char * artist1) { */
+/*   if (strcmp(s->name, name1) > 0) return insert_front(s,name1,artist1); */
+/*   song_node *retVal=s; */
+/*   song_node *bef=s; */
+/*   s = s->next; */
+/*   while (s) { */
+/*     if (strcmp(s->name, name1) > 0) { */
+/*       song_node *new = insert_front(s,name1,artist1); */
+/*       bef->next = new; */
+/*       return retVal; */
+/*      } */
+/*     s = s->next; */
+/*     bef = bef->next; */
+/*   } */
+/*   song_node * toInsert = create_node(name1, artist1); */
+/*   bef->next = toInsert; */
+/*   return retVal; */
+/* } */
 
 song_node * find_song_name(song_node *list, char * song_title){
   while (list){
@@ -64,7 +85,7 @@ void print_list(song_node *n ) {
   printf("[ ");
   
   while(n) {
-    printf("%s ", n->name );
+    printf("%s -- %s ", n->artist, n->name );
     n = n->next;
   }
   printf("]\n");
