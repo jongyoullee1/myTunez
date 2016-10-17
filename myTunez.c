@@ -120,14 +120,28 @@ int len_song_list(song_node *list) {
   return count;
 }
 
-song_node * remove(song_node *list,song_node *to_remove) {
-  song_node *ret=list;
-  song_node *bef=NULL;
+song_node * remove_node(song_node *list,song_node *to_remove) {
   if (list==to_remove) {
-    
-  while (list) {
-    if (list
+    song_node * ret = list->next;
+    list->next = NULL;
+    return ret;
+  }
+  song_node *ret=list;
+  song_node *bef=list;
+  list = list->next;
 
+  while (list) {
+    if (list == to_remove) {
+      bef->next = list->next;
+      list->next = NULL;
+      break;
+    }
+    bef=bef->next;
+    list = list->next;
+  }
+  return ret;
+
+}
 int main() {
 
   song_node *s = 0;
@@ -174,6 +188,12 @@ int main() {
   printf("Testing finding a random song:\n");
   printf("Finding random song in s:\n");
   print_song(find_random(s));
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
+  printf("Testing removing a node (removing uuu node):\n");
+  printf("Removed uuu:\n");
+  print_list(remove_node(s, find_song_name(s, "uuu")));
   /* int c,d; */
   /* for ( c = 1 ; c <= 32767 ; c++ ) */
   /*      for ( d = 1 ; d <= 32767 ; d++ ) */
