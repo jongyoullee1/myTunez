@@ -1,0 +1,8 @@
+musicTest: myTunez.c
+	gcc myStrFuncs.c -g -o musicTest
+
+run: musicTest
+	./musicTest
+
+clean:
+	rm *~	
