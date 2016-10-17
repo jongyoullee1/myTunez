@@ -41,9 +41,18 @@ song_node * in_order(song_node *s,char * name1, char * artist1) {
   return retVal;
 }
 
-song_node * find_song(song_node *list, char * song_title){
+song_node * find_song_name(song_node *list, char * song_title){
   while (list){
     if (strcmp(list->name, song_title) == 0)
+      break;
+    list = list->next;
+  }
+  return list;
+}
+
+song_node * find_song_artist(song_node *list, char * song_artist){
+  while (list){
+    if (strcmp(list->artist, song_artist) == 0)
       break;
     list = list->next;
   }
@@ -88,11 +97,11 @@ int main() {
   printf("\n");
   printf("Testing searching for songs by title:\n");
   printf("Finding \"twinkle twinkle\" in s:\n");
-  print_list(find_song(s, "twinkle twinkle"));
+  print_list(find_song_name(s, "twinkle twinkle"));
   printf("Finding \"uuu\" in s:\n");
-  print_list(find_song(s, "uuu"));
+  print_list(find_song_name(s, "uuu"));
   printf("Finding \"doesn't exist boi\" in s:\n");
-  print_list(find_song(s, "doesn't exist boi"));
+  print_list(find_song_name(s, "doesn't exist boi"));
   printf("\n");
   printf("========================================\n");
   printf("\n");
