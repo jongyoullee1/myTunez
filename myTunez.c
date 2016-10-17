@@ -126,6 +126,14 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+  printf("Testing searching for songs by artist:\n");
+  printf("Finding guest's song in s:\n");
+  print_list(find_song_artist(s, "guest"));
+  printf("Finding anon's song in s:\n");
+  print_list(find_song_artist(s, "anon"));
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
 
   
   return 0;
