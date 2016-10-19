@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "songList.h"
+#include "musicLibrary.h"
 
 void add_song(song_node * table[], char * name1, char * artist1){
   song_node * song = create_node(name1, artist1);

@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifndef IMPORTED
+#define IMPORTED
+
 typedef struct song_node{ 
   char name[256];
   char artist[256];
@@ -18,3 +21,5 @@ song_node * find_random(song_node *list);
 int len_song_list(song_node *list);
 song_node * remove_node(song_node *list,song_node *to_remove) ;
 song_node * free_list(song_node *n );
+
+#endif

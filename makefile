@@ -5,4 +5,4 @@ run: musicTest
 	./musicTest
 
 clean:
-	rm *~	
+	rm *~
