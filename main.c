@@ -5,7 +5,14 @@
 
 int main() {
   srand(time(NULL));
-  song_node *s = 0;
+ 
+  song_node * table[26];
+  int i;
+  for (i = 0; i < 26; i++){
+    table[i] = (song_node *) (malloc(sizeof(song_node *)));
+  }
+
+  song_node * s = table[0];   
 
   printf("\n");
   printf("========================================\n");
@@ -61,5 +68,8 @@ int main() {
   printf("\n");
   free_list(s);
 
+
+  
+  
   return 0;
 }
