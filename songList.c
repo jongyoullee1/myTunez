@@ -3,12 +3,6 @@
 #include <string.h>
 #include "songList.h"
 
-/* typedef struct song_node{  */
-/*   char name[256]; */
-/*   char artist[256]; */
-/*   struct song_node *next; */
-/* } song_node; */
-
 song_node * create_node(char *name1, char *artist1){
   song_node *new = (song_node *) malloc(sizeof(song_node));
   strcpy(new->name,name1);
@@ -80,9 +74,8 @@ void print_song(song_node *n){
 
 song_node * find_random(song_node *list) {
   int len=len_song_list(list);
-  srand(time(NULL));
   int ran=rand()%len;
-  printf("random %d\n",ran);
+  //  printf("random %d\n",ran);
   int i;
   for (i=0;i<ran;i++) {
     list=list->next;
@@ -135,7 +128,7 @@ song_node * free_list(song_node *n ) {
 }
 
 int main() {
-
+  srand(time(NULL));
   song_node *s = 0;
 
   printf("\n");
@@ -145,7 +138,7 @@ int main() {
   printf("At the beginning:\n");
   print_list(s);
   printf("Adding \"twinkle twinkle\":\n");
-  s=insert_front(s,"twinkle twinkle", "anon");
+  s=insert_front(s,"twinkle twinkle", "garett");
   print_list(s);
   printf("Adding \"happy birthday\":\n");
   s=in_order(s,"happy birthday","guest");
@@ -154,7 +147,7 @@ int main() {
   s=in_order(s,"purple","guest");
   print_list(s);
   printf("Adding \"uuu\":\n");
-  s=in_order(s,"uuu","a");
+  s=in_order(s,"uuu","guadalupe");
   print_list(s);
   printf("\n");
   printf("========================================\n");
@@ -180,6 +173,8 @@ int main() {
   printf("Testing finding a random song:\n");
   printf("Finding random song in s:\n");
   print_song(find_random(s));
+    printf("Finding random song in s:\n");
+  print_song(find_random(s));
   printf("\n");
   printf("========================================\n");
   printf("\n");
@@ -187,11 +182,6 @@ int main() {
   printf("Removed uuu:\n");
   s = remove_node(s, find_song_name(s, "uuu"));
   print_list(s);
-  /* int c,d; */
-  /* for ( c = 1 ; c <= 32767 ; c++ ) */
-  /*      for ( d = 1 ; d <= 32767 ; d++ ) */
-  /* 	 1; */
-  /* print_song(find_random(s)); */
   printf("\n");
   free_list(s);
 
