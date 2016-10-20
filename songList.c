@@ -74,6 +74,7 @@ void print_song(song_node *n){
     printf("no song\n");
 }
 
+
 song_node * find_random(song_node *list) {
   int len=len_song_list(list);
   int ran=rand()%len;

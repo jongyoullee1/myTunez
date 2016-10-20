@@ -10,14 +10,16 @@ int main() {
 
   printf("\n");
   printf("========================================\n");
+  printf("Testing song list functions\n");
+  printf("========================================\n");
   printf("\n");
-  printf("Testing printing and inserting in order:\n");
+  printf("Testing printing and inserting in order:\n\n");
   printf("At the beginning:\n");
   print_list(s);
   printf("Adding \"twinkle twinkle\":\n");
   s=insert_front(s,"twinkle twinkle", "garett");
   print_list(s);
-   printf("Adding \"happy birthday\":\n");
+  printf("Adding \"happy birthday\":\n");
   s=in_order(s,"happy birthday","guest");
   print_list(s);
   printf("Adding \"purple\":\n");
@@ -29,7 +31,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  printf("Testing searching for songs by title:\n");
+  printf("Testing searching for songs by title:\n\n");
   printf("Finding \"twinkle twinkle\" in s:\n");
   print_song(find_song_name(s, "twinkle twinkle"));
   printf("Finding \"uuu\" in s:\n");
@@ -39,7 +41,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  printf("Testing searching for songs by artist:\n");
+  printf("Testing searching for songs by artist:\n\n");
   printf("Finding guest's song in s:\n");
   print_song(find_song_artist(s, "guest"));
   printf("Finding anon's song in s:\n");
@@ -47,7 +49,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  printf("Testing finding a random song:\n");
+  printf("Testing finding a random song:\n\n");
   printf("Finding random song in s:\n");
   print_song(find_random(s));
   printf("Finding random song in s:\n");
@@ -55,7 +57,8 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  printf("Testing removing a node (removing uuu node):\n");
+  printf("Testing removing a node:\n\n");
+  printf("Removing uuu node:\n");
   printf("Removed uuu:\n");
   s = remove_node(s, find_song_name(s, "uuu"));
   print_list(s);
@@ -70,23 +73,58 @@ int main() {
     table[i] = NULL;
   }
   
-  printf("Adding aaa's song to the library:\n");
+  printf("\n");
+  printf("========================================\n");
+  printf("Testing music library functions\n");
+  printf("========================================\n");
+  printf("\n");
+  printf("Testing adding songs:\n\n");
+  printf("Adding aaa: mary had a little lamb to the library:\n");
   add_song(table, "mary had a little lamb", "aaa");
+  printf("a list: ");
   print_list(table[0]);
-  printf("Adding abb's song to the library:\n");
+  printf("Adding abb: baba black sheep to the library:\n");
   add_song(table, "baba black sheep", "abb");
+  printf("a list: ");
   print_list(table[0]);
-  printf("Adding bee's song to the library:\n");
+  printf("Adding bee: honey to the library:\n");
   add_song(table, "honey", "bee");
+  printf("b list: ");
   print_list(table[1]);
-  printf("Adding a's song to the library:\n");
+  printf("Adding a: hhhhhhh to the library:\n");
   add_song(table, "hhhhhhh", "a");
+  printf("a list: ");
   print_list(table[0]);
+  printf("Adding aaa: ave maria to the library:\n");
+  add_song(table, "ave maria", "aaa");
+  printf("a list: ");
+  print_list(table[0]);
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
+  printf("Testing searching for songs by title:\n\n");
+  printf("Looking for honey by bee:\n");
+  print_song(search_for_song(table, "honey", "bee"));
+  printf("Looking for mary had a little lamb by aaa:\n");
+  print_song(search_for_song(table, "mary had a little lamb", "aaa"));
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
 
+  //searching for artist
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
+  printf("Testing printing out a list given a letter:\n\n");
+  printf("print list for a:\n");
+  print_songList(table, 'a');
+  printf("print list for b:\n");
+  print_songList(table, 'b');
+  printf("print list for c:\n");
+  print_songList(table, 'c');
 
   
 
-  
-  
+
   return 0;
 }
