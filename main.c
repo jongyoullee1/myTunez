@@ -111,10 +111,22 @@ int main() {
   printf("========================================\n");
   printf("\n");
 
-  //searching for artist
+  /*
+  printf("Testing searching for artist:\n\n");
+  printf("Looking for aaa:\n");
+  print_artists_songs(search_for_artist(table, "aaa"));
+  printf("Looking for bee:\n");
+  print_artists_songs(search_for_artist(table, "bee"));
+  printf("Looking for box:\n");
+  print_artists_songs(search_for_artist(table, "box"));
+  printf("Looking for gg:\n");
+  print_artists_songs(search_for_artist(table, "gg"));
+
   printf("\n");
   printf("========================================\n");
   printf("\n");
+*/
+
   printf("Testing printing out a list given a letter:\n\n");
   printf("print list for a:\n");
   print_songList(table, 'a');
@@ -123,7 +135,24 @@ int main() {
   printf("print list for c:\n");
   print_songList(table, 'c');
 
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
+  /*
+  printf("Testing printing out the whole library:\n");
+  print_library(table);
+  */
   
+  printf("Testing deleting a song\n");
+  printf("Deleting aaa: ave maria:\n");
+  delete_song(table, "ave maria", "aaa");
+  print_list(table[0]);
+  printf("\n");
+  printf("========================================\n");
+  printf("\n");
+  printf("Testing deleting EVERYTHING\n");
+  delete_all(table);
+  print_library(table);
 
 
   return 0;
