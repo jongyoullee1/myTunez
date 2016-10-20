@@ -4,15 +4,9 @@
 #include "songList.h"
 
 int main() {
-  srand(time(NULL));
- 
-  song_node * table[26];
-  int i;
-  for (i = 0; i < 26; i++){
-    table[i] = (song_node *) (malloc(sizeof(song_node *)));
-  }
 
-  song_node * s = table[0];   
+
+  song_node * s = NULL;
 
   printf("\n");
   printf("========================================\n");
@@ -23,7 +17,7 @@ int main() {
   printf("Adding \"twinkle twinkle\":\n");
   s=insert_front(s,"twinkle twinkle", "garett");
   print_list(s);
-  printf("Adding \"happy birthday\":\n");
+   printf("Adding \"happy birthday\":\n");
   s=in_order(s,"happy birthday","guest");
   print_list(s);
   printf("Adding \"purple\":\n");
@@ -56,7 +50,7 @@ int main() {
   printf("Testing finding a random song:\n");
   printf("Finding random song in s:\n");
   print_song(find_random(s));
-    printf("Finding random song in s:\n");
+  printf("Finding random song in s:\n");
   print_song(find_random(s));
   printf("\n");
   printf("========================================\n");
@@ -66,8 +60,31 @@ int main() {
   s = remove_node(s, find_song_name(s, "uuu"));
   print_list(s);
   printf("\n");
-  free_list(s);
+  //  free_list(s);
 
+  srand(time(NULL));
+ 
+  song_node * table[26];
+  int i;
+  for (i = 0; i < 26; i++){
+    table[i] = NULL;
+  }
+  
+  printf("Adding aaa's song to the library:\n");
+  add_song(table, "mary had a little lamb", "aaa");
+  print_list(table[0]);
+  printf("Adding abb's song to the library:\n");
+  add_song(table, "baba black sheep", "abb");
+  print_list(table[0]);
+  printf("Adding bee's song to the library:\n");
+  add_song(table, "honey", "bee");
+  print_list(table[1]);
+  printf("Adding a's song to the library:\n");
+  add_song(table, "hhhhhhh", "a");
+  print_list(table[0]);
+
+
+  
 
   
   

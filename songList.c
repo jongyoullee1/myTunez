@@ -18,7 +18,8 @@ song_node * insert_front(song_node *s,char *name1,char *artist1) {
 }
 
 song_node * in_order(song_node *s,char * name1, char * artist1) {
-  if (strcmp(s->artist, artist1) > 0) return insert_front(s,name1,artist1);
+  if (!s || strcmp(s->artist, artist1) > 0)
+    return insert_front(s,name1,artist1);
   song_node *retVal=s;
   song_node *bef=s;
   s = s->next;
@@ -28,6 +29,7 @@ song_node * in_order(song_node *s,char * name1, char * artist1) {
 	(aCmpVal == 0 && strcmp(s->name, name1) > 0)){
       song_node *new = insert_front(s,name1,artist1);
       bef->next = new;
+   
       return retVal;
     } 
     s = s->next;
@@ -59,7 +61,7 @@ song_node * find_song_artist(song_node *list, char * song_artist){
 void print_list(song_node *n ) {
   printf("[ ");
   while(n) {
-    printf("%s -- %s ", n->artist, n->name );
+    printf("%s: %s ", n->artist, n->name );
     n = n->next;
   }
   printf("]\n");
@@ -67,7 +69,7 @@ void print_list(song_node *n ) {
 
 void print_song(song_node *n){
   if (n)
-    printf("%s -- %s \n", n->artist, n->name );
+    printf("%s: %s \n", n->artist, n->name );
   else
     printf("no song\n");
 }
@@ -120,7 +122,7 @@ song_node * free_list(song_node *n ) {
   song_node *f = n;
   while ( n ) {
     n = n->next;
-    printf("freeing node: %s -- %s\n", f->artist, f->name );
+    printf("freeing node: %s: %s\n", f->artist, f->name );
     free(f);
     f = n;    
   }
