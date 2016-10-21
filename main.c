@@ -82,8 +82,8 @@ int main() {
   printf("========================================\n");
   printf("\n");
   printf("Testing adding songs:\n\n");
-  printf("Adding aaa: mary had a little lamb to the library:\n");
-  add_song(table, "mary had a little lamb", "aaa");
+  printf("Adding Harry Chapin: Cats in the Cradle:\n");
+  add_song(table, "Cats in the Cradle", "Harry Chapin");
   printf("a list: ");
   print_list(table[0]);
   printf("Adding abb: baba black sheep to the library:\n");
