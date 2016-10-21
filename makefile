@@ -5,4 +5,7 @@ run: myTunezTest
 	./myTunezTest
 
 clean:
-	rm *~
+	rm *~ &&
+
+a:
+	rm myTunezTest

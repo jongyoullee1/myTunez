@@ -18,29 +18,24 @@ void print_songList(song_node * table[], char letter){
   int index = letter - 'a';
   print_list(table[index]);
 }
-/*
+
 //returns pointer to first occurence of artist
 song_node * search_for_artist(song_node * table[], char * artist1){
   int index = *artist1 - 'a';
-  printf("part 0\n");
   song_node * start = find_song_artist(table[index], artist1);
-  print_song(start);
-  printf("part 1\n");
   return start;
   }
 
 void print_artists_songs(song_node * table[], char * artist){
-  //  int index = *artist - 'a';
   song_node * start = search_for_artist(table, artist);
   if (!start) printf("no songs found for this artist\n");
   else {
     while (start && strcmp(start->artist, artist) == 0) {
       print_song(start);
-      printf(" ");
       start=start->next;
     }
   }
-}*/
+}
 
 void print_library(song_node * table[]){
   char letter;
