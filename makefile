@@ -1,4 +1,4 @@
-musicTest: main.c
+myTunezTest: main.c
 	gcc main.c songList.c musicLibrary.c -g -o myTunezTest
 
 run: myTunezTest

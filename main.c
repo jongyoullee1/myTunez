@@ -134,14 +134,20 @@ int main() {
   print_songList(table, 'b');
   printf("print list for c:\n");
   print_songList(table, 'c');
-
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  /*
   printf("Testing printing out the whole library:\n");
   print_library(table);
-  */
+  printf("\n");
+  printf("========================================\n");
+  printf("\n"); 
+
+  printf("Testing shuffle:\n\n");
+  shuffle(table);
+  printf("\n");
+  printf("========================================\n");
+  printf("\n"); 
   
   printf("Testing deleting a song\n");
   printf("Deleting aaa: ave maria:\n");

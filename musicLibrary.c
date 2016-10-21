@@ -49,12 +49,35 @@ void print_library(song_node * table[]){
     print_songList(table, letter);
   }
 }
-/*
+
 void shuffle(song_node * table[]){
+  int lengths[26];
+  int totalSongs = 0;
+  int i;
+  for (i = 0; i < 26; i++){
+    int len = len_song_list(table[i]);
+    lengths[i] = len;
+    totalSongs += len;
+  }
+  
   int count;
-  for (count = 3; count > 0; count--)
-    
-  }*/
+  for (count = 3; count > 0; count--){
+    int choice = rand() % totalSongs;
+    for (i = 0; i < 26; i++){
+      if (choice < lengths[i]){
+	song_node * to_print = table[i];
+	while (choice > 0) {	 
+	  to_print = to_print->next;
+	  choice--;
+	}
+	print_song(to_print);
+	break;
+      } //end of if
+      else choice = choice - lengths[i];
+    } //end of for (i ... loop
+  } //end of for (count ... loop
+  
+}
 
 void delete_song(song_node * table[], char * name1, char * artist1){
   int index = *artist1 - 'a';
