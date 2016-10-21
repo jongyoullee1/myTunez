@@ -23,7 +23,7 @@ int main() {
   s=in_order(s,"brave","sara bareilles");
   print_list(s);
   printf("Adding \"i choose you\":\n");
-  s=in_order(s,"i choose you" "sara bareilles");
+  s=in_order(s,"i choose you", "sara bareilles");
   print_list(s);
   printf("Adding \"superstition\":\n");
   s=in_order(s,"superstition","stevie wonder");
@@ -34,6 +34,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+
   printf("Testing searching for songs by title:\n\n");
   printf("Finding \"sir duke\" in s:\n");
   print_song(find_song_name(s, "sir duke"));
@@ -44,6 +45,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+
   printf("Testing searching for songs by artist:\n\n");
   printf("Finding stevie wonder's song in s:\n");
   print_song(find_song_artist(s, "stevie wonder"));
@@ -52,6 +54,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+
   printf("Testing finding a random song:\n\n");
   printf("Finding random song in s:\n");
   print_song(find_random(s));
@@ -60,13 +63,17 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+
   printf("Testing removing a node:\n\n");
   printf("Removing \"i choose you\" node:\n");
   s = remove_node(s, find_song_name(s, "i choose you"));
   print_list(s);
   printf("\n");
-  free_list(s);
 
+  printf("Freeing s:\n\n");
+  s = free_list(s);
+  printf("s: ");
+  print_list(s);
 
   //=============================================================
 
@@ -113,6 +120,7 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+
   printf("Testing searching for songs by title:\n\n");
   printf("Looking for turning tables by adele:\n");
   print_song(search_for_song(table, "turning tables", "adele"));
@@ -123,7 +131,6 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
-
   
   printf("Testing searching for artist:\n\n");
   printf("Looking for imagine dragons:\n");
@@ -135,17 +142,19 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
+
   printf("Testing printing out a list given a letter:\n\n");
   printf("print list for a:\n");
   print_songList(table, 'a');
   printf("print list for i:\n");
   print_songList(table, 'i');
-  printf("print list for c:\n");
+  printf("print list for m:\n");
   print_songList(table, 'm');
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  printf("Testing printing out the whole library:\n");
+
+  printf("Testing printing out the whole library:\n\n");
   print_library(table);
   printf("\n");
   printf("========================================\n");
@@ -157,7 +166,7 @@ int main() {
   printf("========================================\n");
   printf("\n");
   
-  printf("Testing deleting a song\n");
+  printf("Testing deleting a song\n]n");
   printf("Deleting imagine dragons: time:\n");
   delete_song(table, "time", "imagine dragons");
   printf("i list: ");
@@ -165,7 +174,8 @@ int main() {
   printf("\n");
   printf("========================================\n");
   printf("\n");
-  printf("Testing deleting EVERYTHING\n");
+
+  printf("Testing deleting EVERYTHING\n\n");
   delete_all(table);
   print_library(table);
  
